@@ -1,25 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+
 import useGlobalContext from './context'
+import { Form } from './component'
 
 const App = () => {
 
-  const { data, setData } = useGlobalContext()
-  useEffect(() => {
-    let url = process.env.NODE_ENV !== "development" ? "/" : "http://localhost:5000/"
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setData(data.home)
-      }).catch(err => {
-        console.log(err)
-      })
-  }, [])
+  const { data } = useGlobalContext()
 
   return (
     <div>
-      App <br />
-      {data}
+      <Form type="signup" />
     </div>
   )
 }

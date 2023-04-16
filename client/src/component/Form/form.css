@@ -1,0 +1,7 @@
+.app__form-head {
+  color: var(--light-black);
+}
+
+.app__form-head p {
+  color: inherit;
+}
