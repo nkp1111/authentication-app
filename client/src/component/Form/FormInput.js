@@ -1,9 +1,8 @@
 import React from 'react'
-import { FiMail } from 'react-icons/fi'
-import { MdLock } from 'react-icons/md'
+import { MdEmail, MdLock } from 'react-icons/md'
 
 
-const FormInput = ({ type = "signup" }) => {
+const FormInput = ({ type }) => {
   return (
     <form className='needs-validation'
       onSubmit={(e) => {
@@ -19,7 +18,7 @@ const FormInput = ({ type = "signup" }) => {
       <div class="mb-3 input-group">
         <label for="email" class="form-label visually-hidden">Email</label>
         <span class="input-group-text" id="email-icon">
-          <FiMail />
+          <MdEmail />
         </span>
         <input
           type="email"

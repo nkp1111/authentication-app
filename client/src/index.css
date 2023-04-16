@@ -28,9 +28,10 @@ h3 {
 }
 
 p {
-  color: var(--light-gray)
+  color: var(--gray)
 }
 
 a {
   color: var(--blue-light);
+  text-decoration: none;
 }
