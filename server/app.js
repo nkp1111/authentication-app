@@ -3,9 +3,10 @@ const app = express()
 const cors = require("cors")
 require("dotenv").config({ path: require('find-config')('config.env') })
 
-console.log(process.env.PORT, process.env.DATABASE_URL)
-
 const port = process.env.PORT || 5000
+const databaseUrl = process.env.DATABASE_URL
+
+const dbConnection = require("./db/connection")
 
 app.use(cors())
 app.use(express.json())
@@ -15,5 +16,7 @@ app.get("/", (req, res) => {
 })
 
 app.listen(port, () => {
+  // mongoose database connection
+  dbConnection(databaseUrl)
   console.log(`Server is running on port ${port}`)
 })
