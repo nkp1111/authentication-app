@@ -9,8 +9,8 @@ const SocialProfile = ({ type }) => {
       <p className='text-center'>or continue with these social profile</p>
       <div className="social-icons d-flex justify-content-center">
         {[GrGoogle, GrFacebook, GrTwitter, GrGithub].map((Item, ind) => (
-          <div className='icon mx-2'>
-            {<Item key={ind} />}
+          <div className='icon mx-2' key={ind}>
+            {<Item />}
           </div>
         ))}
       </div>

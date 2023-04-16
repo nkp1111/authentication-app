@@ -3,47 +3,73 @@ import { MdEmail, MdLock } from 'react-icons/md'
 
 
 const FormInput = ({ type }) => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    if (!form.checkValidity()) {
+      e.stopPropagation()
+      form.classList.add("was-validated")
+    }
+    else {
+      const route = type === "signup" ? "/user/register" : "/user/login"
+      const url = process.env.NODE_ENV !== "development" ? route : "http://localhost:5000" + route
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: "dummy",
+          password: "password"
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+        })
+        .catch(err => {
+          console.log("error happened during user register")
+          console.log(err)
+        })
+    }
+  }
+
   return (
     <form className='needs-validation'
-      onSubmit={(e) => {
-        e.preventDefault()
-        const form = e.currentTarget
-        if (!form.checkValidity()) {
-          e.stopPropagation()
-          form.classList.add("was-validated")
-        }
-      }}
+      onSubmit={(e) => handleSubmit(e)}
       noValidate
     >
-      <div class="mb-3 input-group">
-        <label for="email" class="form-label visually-hidden">Email</label>
-        <span class="input-group-text" id="email-icon">
+      <div className="mb-3 input-group">
+        <label htmlFor="email" className="form-label visually-hidden">Email</label>
+        <span className="input-group-text" id="email-icon">
           <MdEmail />
         </span>
         <input
           type="email"
-          class="form-control"
+          className="form-control"
           id="email"
           placeholder='Email'
           aria-describedby="email-icon"
           required />
       </div>
 
-      <div class="mb-3 input-group">
-        <label for="password" class="form-label visually-hidden">Password</label>
-        <span class="input-group-text" id="password-icon">
+      <div className="mb-3 input-group">
+        <label htmlFor="password" className="form-label visually-hidden">Password</label>
+        <span className="input-group-text" id="password-icon">
           <MdLock />
         </span>
         <input
           type="password"
-          class="form-control"
+          className="form-control"
           id="password"
           placeholder='Password'
           aria-describedby="password-icon"
           required />
       </div>
 
-      <button type="submit" class="btn mx-auto w-100">
+      <button type="submit" className="btn mx-auto w-100">
         {type === "signup"
           ? "Start coding now"
           : "Login"}
