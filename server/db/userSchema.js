@@ -1,19 +1,10 @@
 const mongoose = require("mongoose")
-const uniqueValidator = require("mongoose-unique-validator")
+// const uniqueValidator = require("mongoose-unique-validator")
+const passportLocalMongoose = require("passport-local-mongoose")
 
-const UserSchema = new mongoose.Schema({
-  email: {
-    type: "string",
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: "string",
-    required: true
-  }
-})
+const UserSchema = new mongoose.Schema({})
 
-UserSchema.plugin(uniqueValidator)
+UserSchema.plugin(passportLocalMongoose)
 
 const User = mongoose.model("User", UserSchema)
 
