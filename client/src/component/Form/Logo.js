@@ -4,7 +4,7 @@ import { images } from '../../utils'
 
 const Logo = () => {
   return (
-    <div className='form-logo'>
+    <div className='app__form-logo'>
       <img src={images.logo} alt="logo" />
     </div>
   )

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --gray: #BDBDBD;
+  --gray: #828282;
   --violet: #282051;
-  --light-gray: #828282;
+  --light-gray: #BDBDBD;
   /* button color  */
   --blue: #2F80ED;
   /* link tags color  */

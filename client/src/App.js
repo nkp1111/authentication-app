@@ -8,7 +8,7 @@ const App = () => {
   const { data } = useGlobalContext()
 
   return (
-    <div>
+    <div className='d-flex flex-column justify-content-center align-items-center vh-100'>
       <Form type="signup" />
     </div>
   )

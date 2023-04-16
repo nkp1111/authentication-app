@@ -1,7 +1,26 @@
+.app__form {
+  width: 40vw;
+  min-width: 22rem;
+
+  margin: auto;
+  padding: 3rem;
+
+  border-radius: 2rem;
+  border: 1px solid var(--light-gray);
+}
+
+.app__form-logo {
+  margin-bottom: 1rem;
+}
+
 .app__form-head {
   color: var(--light-black);
 }
 
 .app__form-head p {
   color: inherit;
+}
+
+.app__form-head strong {
+  font-weight: 600;
 }

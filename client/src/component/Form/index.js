@@ -2,9 +2,10 @@ import React from 'react'
 
 import SignUpText from './SignUpText'
 import Logo from './Logo'
+import FormInput from './FormInput'
 import "./form.css"
 
-const Form = ({ type = "signup" }) => {
+const Index = ({ type = "signup" }) => {
   return (
     <div className='app__form card'>
       <Logo />
@@ -15,8 +16,9 @@ const Form = ({ type = "signup" }) => {
             <p>Login</p>
           </div>
         )}
+      <FormInput />
     </div>
   )
 }
 
-export default Form
+export default Index
