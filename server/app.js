@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
-  res.send("home")
+  res.json({ home: "home" })
 })
 
 app.listen(port, () => {
