@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { images } from '../../utils'
+
 const Logo = () => {
   return (
-    <div>
-      logo
+    <div className='form-logo'>
+      <img src={images.logo} alt="logo" />
     </div>
   )
 }
