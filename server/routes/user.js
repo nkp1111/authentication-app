@@ -29,7 +29,7 @@ router.post("/login", async (req, res) => {
     } else if (user.password !== password) {
       res.send({ "error": "Email or Password is incorrect" })
     } else {
-      res.send({ "success": "User found", user })
+      res.send({ "success": "Successfully logged in", user })
     }
 
   } catch (error) {

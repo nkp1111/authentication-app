@@ -1,6 +1,20 @@
 import React, { useRef } from 'react'
 import { MdEmail, MdLock } from 'react-icons/md'
+import toast from 'react-hot-toast'
 
+
+const errorStyle = {
+  border: "1px solid red",
+  background: "rgba(255,0,0,0.3)",
+  color: "#333",
+  fontWeight: "600"
+}
+
+const successStyle = {
+  background: "rgba(0,255,0,0.3)",
+  color: "#333",
+  fontWeight: "600"
+}
 
 const FormInput = ({ type }) => {
 
@@ -30,10 +44,20 @@ const FormInput = ({ type }) => {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          if (data.error) {
+            toast(data.error, {
+              style: errorStyle
+            })
+          }
+
+          if (data.success) {
+            toast(data.success, {
+              style: successStyle
+            })
+          }
         })
         .catch(err => {
-          console.log("error happened during user register")
+          console.log("error happened during user register/login")
           console.log(err)
         })
     }
