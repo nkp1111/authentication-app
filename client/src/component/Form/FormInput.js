@@ -3,10 +3,19 @@ import { FiMail } from 'react-icons/fi'
 import { MdLock } from 'react-icons/md'
 
 
-const FormInput = () => {
+const FormInput = ({ type = "signup" }) => {
   return (
-    <form className='needs-validation'>
-
+    <form className='needs-validation'
+      onSubmit={(e) => {
+        e.preventDefault()
+        const form = e.currentTarget
+        if (!form.checkValidity()) {
+          e.stopPropagation()
+          form.classList.add("was-validated")
+        }
+      }}
+      noValidate
+    >
       <div class="mb-3 input-group">
         <label for="email" class="form-label visually-hidden">Email</label>
         <span class="input-group-text" id="email-icon">
@@ -17,7 +26,8 @@ const FormInput = () => {
           class="form-control"
           id="email"
           placeholder='Email'
-          aria-describedby="email-icon" />
+          aria-describedby="email-icon"
+          required />
       </div>
 
       <div class="mb-3 input-group">
@@ -30,10 +40,15 @@ const FormInput = () => {
           class="form-control"
           id="password"
           placeholder='Password'
-          aria-describedby="password-icon" />
+          aria-describedby="password-icon"
+          required />
       </div>
 
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn mx-auto w-100">
+        {type === "signup"
+          ? "Start coding now"
+          : "Login"}
+      </button>
     </form>
   )
 }

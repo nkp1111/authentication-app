@@ -3,6 +3,7 @@ import React from 'react'
 import SignUpText from './SignUpText'
 import Logo from './Logo'
 import FormInput from './FormInput'
+import SocialProfile from './SocialProfile'
 import "./form.css"
 
 const Index = ({ type = "signup" }) => {
@@ -17,6 +18,7 @@ const Index = ({ type = "signup" }) => {
           </div>
         )}
       <FormInput />
+      <SocialProfile />
     </div>
   )
 }

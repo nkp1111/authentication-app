@@ -24,3 +24,9 @@
 .app__form-head strong {
   font-weight: 600;
 }
+
+.app__form .btn {
+  background: var(--blue);
+  color: #fff;
+  font-weight: 600;
+}
