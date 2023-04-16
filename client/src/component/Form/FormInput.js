@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { MdEmail, MdLock } from 'react-icons/md'
 
 
 const FormInput = ({ type }) => {
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,8 +21,8 @@ const FormInput = ({ type }) => {
       fetch(url, {
         method: "POST",
         body: JSON.stringify({
-          email: "dummy",
-          password: "password"
+          email: emailRef.current.value,
+          password: passwordRef.current.value
         }),
         headers: {
           "Content-Type": "application/json",
@@ -52,6 +55,7 @@ const FormInput = ({ type }) => {
           id="email"
           placeholder='Email'
           aria-describedby="email-icon"
+          ref={emailRef}
           required />
       </div>
 
@@ -66,6 +70,7 @@ const FormInput = ({ type }) => {
           id="password"
           placeholder='Password'
           aria-describedby="password-icon"
+          ref={passwordRef}
           required />
       </div>
 
