@@ -1,15 +1,16 @@
 const express = require("express")
 const router = express.Router()
+const passport = require("passport")
 
 const User = require("../db/userSchema")
 
 router.post("/register", async (req, res) => {
   // add user in database
-  const { email, password } = req.body
+  const { username, password } = req.body
   try {
-    if (email && password) {
-      const newUser = User({ email, password })
-      await newUser.save()
+    if (username && password) {
+      const newUser = User({ username })
+      await User.register(newUser, password)
       res.send({ "success": "user added" })
     }
   } catch (error) {
@@ -18,24 +19,11 @@ router.post("/register", async (req, res) => {
   }
 })
 
-router.post("/login", async (req, res) => {
-  // check user in database
-  const { email, password } = req.body
-  try {
-    const user = await User.findOne({ email })
-
-    if (!user) {
-      res.send({ "error": "User is not found" })
-    } else if (user.password !== password) {
-      res.send({ "error": "Email or Password is incorrect" })
-    } else {
-      res.send({ "success": "Successfully logged in", user })
-    }
-
-  } catch (error) {
-    console.log(error)
-    res.send({ "error": "Error connecting to database" })
-  }
-})
+router.post("/login",
+  passport.authenticate("local"),
+  (req, res) => {
+    // check user in database
+    res.send({ "success": "Successfully logged in" })
+  })
 
 module.exports = router

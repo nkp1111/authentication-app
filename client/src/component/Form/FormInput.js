@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { MdEmail, MdLock } from 'react-icons/md'
 import toast from 'react-hot-toast'
 
-
+// notification styles 
 const errorStyle = {
   border: "1px solid red",
   background: "rgba(255,0,0,0.3)",
@@ -35,7 +35,7 @@ const FormInput = ({ type }) => {
       fetch(url, {
         method: "POST",
         body: JSON.stringify({
-          email: emailRef.current.value,
+          username: emailRef.current.value,
           password: passwordRef.current.value
         }),
         headers: {
@@ -49,7 +49,6 @@ const FormInput = ({ type }) => {
               style: errorStyle
             })
           }
-
           if (data.success) {
             toast(data.success, {
               style: successStyle
@@ -58,6 +57,9 @@ const FormInput = ({ type }) => {
         })
         .catch(err => {
           console.log("error happened during user register/login")
+          toast("Something went wrong", {
+            style: errorStyle
+          })
           console.log(err)
         })
     }
