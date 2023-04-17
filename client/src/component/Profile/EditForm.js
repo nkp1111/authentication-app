@@ -38,6 +38,9 @@ const EditForm = ({ userData, setEditProfile }) => {
         const textarea = form.querySelector("textarea")
         editedProfileInfo["bio"] = textarea.value
 
+        console.log(userData)
+        editedProfileInfo["id"] = userData._id
+
         fetchProfileEdited(editedProfileInfo)
       })
     }
