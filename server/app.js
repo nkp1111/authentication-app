@@ -8,8 +8,9 @@ const LocalStrategy = require("passport-local")
 const MongoStore = require("connect-mongo")
 
 const dbConnection = require("./db/connection")
-const userRoute = require("./routes/user")
 const User = require("./db/userSchema")
+const userRoute = require("./routes/user")
+const profileRoute = require("./routes/profile")
 
 const port = process.env.PORT || 5000
 const databaseUrl = process.env.DATABASE_URL
@@ -45,6 +46,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use("/user", userRoute)
+app.use("/profile", profileRoute)
 
 app.get("/", (req, res) => {
   res.json({ home: "home" })

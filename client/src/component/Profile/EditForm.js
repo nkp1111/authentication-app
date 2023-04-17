@@ -1,41 +1,45 @@
 import React, { useRef } from 'react'
 import { MdArrowBackIosNew } from 'react-icons/md'
 
+import { fetchProfileEdited } from '../../utils'
+
 const EditForm = ({ userData, setEditProfile }) => {
 
   const imageRef = useRef();
+
   const handleEdit = (e) => {
+    // check editted information and send to database
     e.preventDefault()
     e.stopPropagation()
     const form = e.currentTarget
     if (!form.checkValidity()) {
-      console.log("pro")
       form.classList.add("was-validated")
-    } else {
-      const edittedProfile = {}
-      const inputs = form.querySelectorAll("input")
-      const textarea = form.querySelector("textarea")
+    }
+    else {
+      const editedProfileInfo = {}
+
+      // image field 
       const img = imageRef.current.files[0]
       const reader = new FileReader()
       reader.readAsDataURL(img)
-
-      // image field 
       reader.addEventListener("loadend", function (e) {
         const image = this.result
-        edittedProfile["image"] = image
+        editedProfileInfo["image"] = image
+
+        // inputs field 
+        const inputs = form.querySelectorAll("input")
+        inputs?.forEach((input, ind) => {
+          if (ind > 0) {
+            editedProfileInfo[input.id] = input.value
+          }
+        })
+
+        // bio field 
+        const textarea = form.querySelector("textarea")
+        editedProfileInfo["bio"] = textarea.value
+
+        fetchProfileEdited(editedProfileInfo)
       })
-
-      // input field 
-      inputs?.forEach((input, ind) => {
-        if (ind > 0) {
-          edittedProfile[input.id] = input.value
-        }
-      })
-
-      // bio field 
-      edittedProfile["bio"] = textarea.value
-
-      console.log(edittedProfile)
     }
   }
 
