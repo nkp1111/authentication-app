@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
-import { Form, Header, Profile } from './component'
+import { Form, Profile } from './component'
 
 const App = () => {
 

@@ -32,10 +32,6 @@
 }
 
 .app__form .btn {
-  background: var(--blue);
-  color: #fff;
-  font-weight: 600;
-
   margin: 1rem 0;
 }
 
