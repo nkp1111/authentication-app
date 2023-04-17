@@ -3,12 +3,13 @@ import React, { createContext, useContext, useState } from 'react'
 const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
-  const [data, setData] = useState("initial value");
+  const [userData, setUserData] = useState({});
+
   return (
     <AppContext.Provider
       value={{
-        data,
-        setData,
+        userData,
+        setUserData,
       }}
     >
       {children}

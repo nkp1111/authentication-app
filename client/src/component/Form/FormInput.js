@@ -1,25 +1,20 @@
 import React, { useRef } from 'react'
 import { MdEmail, MdLock } from 'react-icons/md'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
-// notification styles 
-const errorStyle = {
-  border: "1px solid red",
-  background: "rgba(255,0,0,0.3)",
-  color: "#333",
-  fontWeight: "600"
-}
+import useGlobalContext from '../../context'
+import { notFicStyles } from '../../utils'
 
-const successStyle = {
-  background: "rgba(0,255,0,0.3)",
-  color: "#333",
-  fontWeight: "600"
-}
+
+const { errorStyle, successStyle } = notFicStyles
 
 const FormInput = ({ type }) => {
 
+  const { setUserData } = useGlobalContext()
   const emailRef = useRef(null);
   const passwordRef = useRef(null)
+  const navigateToProfile = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,7 +34,7 @@ const FormInput = ({ type }) => {
           password: passwordRef.current.value
         }),
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
       })
         .then(res => res.json())
@@ -53,7 +48,9 @@ const FormInput = ({ type }) => {
             toast(data.success, {
               style: successStyle
             })
-            console.log(data.user)
+            // get all user data for profile
+            setUserData(data.user)
+            navigateToProfile("/profile")
           }
         })
         .catch(err => {
