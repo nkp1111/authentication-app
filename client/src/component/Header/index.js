@@ -10,7 +10,7 @@ import "./header.css"
 
 const { errorStyle, successStyle } = notFicStyles
 
-const Index = ({ userData }) => {
+const Index = ({ username, image }) => {
 
   const logout = (e) => {
     const route = "/user/logout"
@@ -53,9 +53,9 @@ const Index = ({ userData }) => {
 
           <div className="profile d-flex align-items-center ms-auto">
             <div>
-              <img src="" alt="" width="50" height="50" />
+              <img src={image} alt="avatar" width="50" height="50" />
             </div>
-            {"Dummy name"}
+            {username || "Dummy 1"}
           </div>
 
           <ul className="navbar-nav mb-2 mb-lg-0">
