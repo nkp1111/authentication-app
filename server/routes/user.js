@@ -10,8 +10,13 @@ router.post("/register", async (req, res) => {
   try {
     if (username && password) {
       const newUser = User({ username })
-      await User.register(newUser, password)
-      res.send({ "success": "user added" })
+      const user = await User.register(newUser, password)
+      req.login(user, err => {
+        if (err) {
+          res.send({ "error": "Error during login" })
+        }
+      })
+      res.send({ "success": "User added" })
     }
   } catch (error) {
     console.log(error)
@@ -22,8 +27,30 @@ router.post("/register", async (req, res) => {
 router.post("/login",
   passport.authenticate("local"),
   (req, res) => {
-    // check user in database
-    res.send({ "success": "Successfully logged in" })
+    // login user in database
+
+    req.login(req.user, err => {
+      if (err) {
+        res.send({ "error": "Error during login" })
+      }
+    })
+    res.send({ success: "Successfully logged in", user: req.user })
   })
+
+router.post("/logout", (req, res) => {
+  // logout user in database
+
+  if (req.isAuthenticated()) {
+    req.logout(function (err) {
+      if (err) {
+        res.send({ "error": "Something went wrong!" })
+      } else {
+        res.send({ "success": "Successfully logged out!" })
+      }
+    })
+  } else {
+    res.send({ "error": "Please log In..." })
+  }
+})
 
 module.exports = router

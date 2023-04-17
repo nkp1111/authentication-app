@@ -53,6 +53,7 @@ const FormInput = ({ type }) => {
             toast(data.success, {
               style: successStyle
             })
+            console.log(data.user)
           }
         })
         .catch(err => {
