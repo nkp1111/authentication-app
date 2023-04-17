@@ -1,13 +1,9 @@
 import React, { useRef } from 'react'
 import { MdEmail, MdLock } from 'react-icons/md'
-import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 import useGlobalContext from '../../context'
-import { notFicStyles } from '../../utils'
-
-
-const { errorStyle, successStyle } = notFicStyles
+import { fetchUser } from '../../utils'
 
 const FormInput = ({ type }) => {
 
@@ -24,41 +20,13 @@ const FormInput = ({ type }) => {
       form.classList.add("was-validated")
     }
     else {
-      const route = type === "signup" ? "/user/register" : "/user/login"
-      const url = process.env.NODE_ENV !== "development" ? route : "http://localhost:5000" + route
+      const username = emailRef.current.value
+      const password = passwordRef.current.value
 
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-          username: emailRef.current.value,
-          password: passwordRef.current.value
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-        .then(res => res.json())
+      fetchUser(type, username, password)
         .then(data => {
-          if (data.error) {
-            toast(data.error, {
-              style: errorStyle
-            })
-          }
-          if (data.success) {
-            toast(data.success, {
-              style: successStyle
-            })
-            // get all user data for profile
-            setUserData(data.user)
-            navigateToProfile("/profile")
-          }
-        })
-        .catch(err => {
-          console.log("error happened during user register/login")
-          toast("Something went wrong", {
-            style: errorStyle
-          })
-          console.log(err)
+          setUserData(data)
+          navigateToProfile("/profile")
         })
     }
   }
