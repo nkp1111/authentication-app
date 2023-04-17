@@ -80,7 +80,8 @@ const FormInput = ({ type }) => {
           placeholder='Email'
           aria-describedby="email-icon"
           ref={emailRef}
-          required />
+          required
+          autoComplete="true" />
       </div>
 
       <div className="mb-3 input-group">
@@ -95,7 +96,8 @@ const FormInput = ({ type }) => {
           placeholder='Password'
           aria-describedby="password-icon"
           ref={passwordRef}
-          required />
+          required
+          autoComplete="true" />
       </div>
 
       <button type="submit" className="btn mx-auto w-100">

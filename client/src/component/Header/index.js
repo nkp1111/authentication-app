@@ -10,7 +10,7 @@ import "./header.css"
 
 const { errorStyle, successStyle } = notFicStyles
 
-const Index = ({ username, image }) => {
+const Index = ({ username, image, setEditProfile }) => {
 
   const logout = (e) => {
     const route = "/user/logout"
@@ -65,7 +65,8 @@ const Index = ({ username, image }) => {
               </button>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/profile">
+                  <a className="dropdown-item" href="#"
+                    onClick={(e) => setEditProfile(false)}>
                     <CgProfile /> My Profile
                   </a>
                 </li>
