@@ -7,7 +7,15 @@ import { TbLogout } from 'react-icons/tb'
 import { images, fetchLogout } from '../../utils'
 import "./header.css"
 
-const Index = ({ username, image, setEditProfile }) => {
+const Index = ({ userData, setEditProfile }) => {
+
+  const { username, name, image } = userData
+  let imageToShow
+  if (!image) {
+    imageToShow = "https://www.gravatar.com/avatar/"
+  } else {
+    imageToShow = image.url
+  }
 
   const navigator = useNavigate()
 
@@ -27,9 +35,9 @@ const Index = ({ username, image, setEditProfile }) => {
 
           <div className="profile d-flex align-items-center ms-auto">
             <div>
-              <img src={image} alt="avatar" width="50" height="50" />
+              <img src={imageToShow} alt="avatar" width="50" height="50" />
             </div>
-            {username || "Dummy 1"}
+            {name || username || "None"}
           </div>
 
           <ul className="navbar-nav mb-2 mb-lg-0">

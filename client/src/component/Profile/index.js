@@ -9,7 +9,6 @@ import { Header } from '..'
 const Index = () => {
   const navigate = useNavigate()
   const { userData, setUserData } = useGlobalContext()
-  const { username, image = "https://www.gravatar.com/avatar/" } = userData
 
   const [editProfile, setEditProfile] = useState(false);
 
@@ -24,7 +23,7 @@ const Index = () => {
 
   return (
     <div>
-      <Header username={username} image={image} setEditProfile={setEditProfile} />
+      <Header userData={userData} setEditProfile={setEditProfile} />
       {editProfile
         ? <EditForm userData={userData} setEditProfile={setEditProfile} />
         : <UserInfo userData={userData} setEditProfile={setEditProfile} />}
