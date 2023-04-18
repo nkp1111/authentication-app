@@ -5,6 +5,7 @@ import useGlobalContext from '../../context'
 import UserInfo from './UserInfo'
 import EditForm from './EditForm'
 import { Header } from '..'
+import "./profile.css"
 
 const Index = () => {
   const navigate = useNavigate()
@@ -24,9 +25,11 @@ const Index = () => {
   return (
     <div>
       <Header userData={userData} setEditProfile={setEditProfile} />
-      {editProfile
-        ? <EditForm userData={userData} setEditProfile={setEditProfile} />
-        : <UserInfo userData={userData} setEditProfile={setEditProfile} />}
+      <div className="profile-holder">
+        {editProfile
+          ? <EditForm userData={userData} setEditProfile={setEditProfile} />
+          : <UserInfo userData={userData} setEditProfile={setEditProfile} />}
+      </div>
     </div>
   )
 }

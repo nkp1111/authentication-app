@@ -13,19 +13,21 @@ const UserInfo = ({ userData, setEditProfile }) => {
 
   return (
     <section className='personal-info'>
-      <h2>Personal info</h2>
-      <p>Basic info, like your name and photo</p>
+      <h2 className='text-center'>Personal info</h2>
+      <p className='text-center'>Basic info, like your name and photo</p>
       <div className="card">
         {/* card heading  */}
-        <div className="card-header d-flex align-items-center">
+        <div className="card-header d-flex align-items-center justify-content-between">
           <div>
             <h3 className="card-title">
               Profile
             </h3>
             <p>Some info may be visible to other people</p>
           </div>
-          <div className='ms-auto w-25'>
-            <button onClick={() => setEditProfile(true)}>Edit</button>
+          <div>
+            <button onClick={() => setEditProfile(true)} className='btn'>
+              Edit
+            </button>
           </div>
         </div>
         {/* card body  */}
@@ -35,7 +37,9 @@ const UserInfo = ({ userData, setEditProfile }) => {
               return (
                 <div className="row" key={item}>
                   {/* item name  */}
-                  <div className="col-4">{item.toUpperCase()}</div>
+                  <div className="col-4">
+                    <p>{item.toUpperCase()}</p>
+                  </div>
                   {/* profile value  */}
                   <div className="col-8">
                     {item === "password"

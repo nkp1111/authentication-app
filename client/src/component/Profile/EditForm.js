@@ -1,11 +1,18 @@
 import React, { useRef } from 'react'
-import { MdArrowBackIosNew } from 'react-icons/md'
+import { MdArrowBackIosNew, MdCameraAlt } from 'react-icons/md'
 
 import { fetchProfileEdited } from '../../utils'
 
 const EditForm = ({ userData, setEditProfile }) => {
 
   const imageRef = useRef();
+
+  let imageToShow
+  if (userData.image) {
+    imageToShow = userData.image.url
+  } else {
+    imageToShow = "https://www.gravatar.com/avatar/"
+  }
 
   const handleEdit = (e) => {
     // check editted information and send to database
@@ -51,7 +58,8 @@ const EditForm = ({ userData, setEditProfile }) => {
 
   return (
     <div>
-      <button onClick={() => setEditProfile(false)}><MdArrowBackIosNew /> Back</button>
+      <button onClick={() => setEditProfile(false)}
+        className='btn back-button'><MdArrowBackIosNew /> Back</button>
       <section className='profile-edit'>
         <h2>Change Info</h2>
         <p>Changes will be reflected to every services</p>
@@ -61,11 +69,14 @@ const EditForm = ({ userData, setEditProfile }) => {
           noValidate>
 
           {/* image  */}
-          <div className="mb-3 d-flex align-items-center">
-            <div className='profile-img-edit'>
-              <img src="https://www.gravatar.com/avatar/" alt="" />
-            </div>
-            <label htmlFor='image' role="button">CHANGE PHOTO
+          <div className="mb-3">
+            <label htmlFor='image' role="button"
+              className='d-flex align-items-center'>
+              <div className='profile-img-edit'>
+                <MdCameraAlt className='camera-icon' />
+                <img src={imageToShow} alt="profile" />
+              </div>
+              CHANGE PHOTO
               <input type="file" id="image" name="image"
                 className='invisible'
                 ref={imageRef}
@@ -99,7 +110,7 @@ const EditForm = ({ userData, setEditProfile }) => {
 
           {/* email  */}
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">email</label>
+            <label htmlFor="email" className="form-label">Email</label>
             <input type="email" className="form-control" id="email" placeholder="Enter your email..."
               required
               autoComplete={userData?.email ? userData.email : "true"} />
