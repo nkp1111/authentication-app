@@ -6,6 +6,7 @@ const session = require("express-session")
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const MongoStore = require("connect-mongo")
+const cookieParser = require("cookie-parser")
 
 const dbConnection = require("./db/connection")
 const User = require("./db/userSchema")
@@ -17,13 +18,14 @@ const databaseUrl = process.env.DATABASE_URL
 let store = MongoStore.create({
   mongoUrl: databaseUrl,
   secret: "AbadSecret",
-  touchAfter: 24 * 60 * 60
+  touchAfter: 7 * 24 * 60 * 60
 })
 
 store.on("error", function (e) {
   console.log("session store error", e)
 })
 
+app.use(cookieParser())
 app.use(cors())
 app.use(express.json())
 app.use(session({

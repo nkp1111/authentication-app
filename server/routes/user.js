@@ -16,10 +16,10 @@ router.post("/register", async (req, res) => {
           res.send({ "error": "Error during login" })
         }
       })
-      res.send({ "success": "User added" })
+      res.cookie("sessionId", req.session.id)
+      res.send({ "success": "User added", user })
     }
   } catch (error) {
-    console.log(error)
     res.send({ "error": "User is not added" })
   }
 })
@@ -28,18 +28,19 @@ router.post("/login",
   passport.authenticate("local"),
   (req, res) => {
     // login user in database
-
     req.login(req.user, err => {
       if (err) {
         res.send({ "error": "Error during login" })
       }
     })
+    console.log(req.user)
+    res.cookie("sessionId", req.session.id)
     res.send({ success: "Successfully logged in", user: req.user })
   })
 
 router.post("/logout", (req, res) => {
   // logout user in database
-
+  console.log(req.session)
   if (req.isAuthenticated()) {
     req.logout(function (err) {
       if (err) {
