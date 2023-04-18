@@ -27,7 +27,7 @@ const Index = ({ userData, setEditProfile }) => {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <nav className="navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/profile">
             <img src={images.logo} alt="logo" />
@@ -37,7 +37,7 @@ const Index = ({ userData, setEditProfile }) => {
             <div>
               <img src={imageToShow} alt="avatar" width="50" height="50" />
             </div>
-            {name || username || "None"}
+            {(name && name[0].toUpperCase() + name.slice(1,)) || username || "None"}
           </div>
 
           <ul className="navbar-nav mb-2 mb-lg-0">

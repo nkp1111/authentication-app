@@ -8,6 +8,7 @@ const App = () => {
 
   return (
     <main>
+      <h1 className='visually-hidden'>Authentication App</h1>
       <Toaster />
       <Routes>
         <Route path="/form/:type" element={<Form />} />

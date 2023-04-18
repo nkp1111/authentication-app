@@ -1,21 +1,40 @@
 .container-fluid {
-  padding: 1rem 5vw;
+  padding: 0.7rem 5vw;
 }
 
 nav .profile {
   margin-right: 1rem;
+
+  font-weight: 700;
 }
 
 nav .profile img {
   margin-right: 1rem;
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 0.5rem;
 }
 
 .dropdown-menu[data-bs-popper] {
-  left: -6rem;
+  position: absolute;
+  left: -8rem;
   top: 3rem;
   padding: 1rem;
 
   border-radius: 1rem;
+}
+
+.dropdown-toggle {
+  border: none;
+  border-radius: 0.5rem;
+
+  padding: 0.2rem 1rem;
+}
+
+.dropdown-toggle:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  scale: 1.05;
 }
 
 .dropdown-item {

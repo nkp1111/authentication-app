@@ -1,5 +1,5 @@
 .app__form {
-  width: 40vw;
+  width: 35vw;
   min-width: 22rem;
 
   margin: auto;
@@ -33,6 +33,10 @@
 
 .app__form .btn {
   margin: 1rem 0;
+}
+
+.app__form .btn:hover {
+  opacity: 0.95;
 }
 
 /* social profile  */
