@@ -8,16 +8,19 @@ import { Header } from '..'
 
 const Index = () => {
   const navigate = useNavigate()
-  const { userData } = useGlobalContext()
+  const { userData, setUserData } = useGlobalContext()
   const { username, image = "https://www.gravatar.com/avatar/" } = userData
 
   const [editProfile, setEditProfile] = useState(false);
 
   useEffect(() => {
-    if (!username) {
+    const user = localStorage.getItem("user")
+    if (user) {
+      setUserData(JSON.parse(user))
+    } else {
       navigate("/form/login")
     }
-  }, [navigate, username]);
+  }, []);
 
   return (
     <div>

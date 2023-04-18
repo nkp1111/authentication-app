@@ -7,7 +7,8 @@ const { errorStyle, successStyle } = notFicStyles
 const fetchProfileEdited = (newInfo) => {
   const route = "/profile/edit"
   const url = process.env.NODE_ENV !== "development" ? route : "http://localhost:5000" + route
-  fetch(url, {
+
+  return fetch(url, {
     method: "POST",
     body: JSON.stringify(newInfo),
     headers: {
@@ -21,10 +22,12 @@ const fetchProfileEdited = (newInfo) => {
           style: errorStyle
         })
       }
+
       if (data.success) {
         toast(data.success, {
           style: successStyle
         })
+
         localStorage.setItem("user", JSON.stringify(data.user))
         return data.user
       }

@@ -35,7 +35,7 @@ router.post("/login",
     })
     console.log(req.user)
     res.cookie("sessionId", req.session.id)
-    res.send({ success: "Successfully logged in", user: req.user })
+    res.send({ "success": "Successfully logged in", user: req.user })
   })
 
 router.post("/logout", (req, res) => {

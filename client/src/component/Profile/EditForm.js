@@ -16,7 +16,7 @@ const EditForm = ({ userData, setEditProfile }) => {
       form.classList.add("was-validated")
     }
     else {
-      const editedProfileInfo = {}
+      const editedProfileInfo = { ...userData }
 
       // image field 
       const img = imageRef.current.files[0]
@@ -38,10 +38,12 @@ const EditForm = ({ userData, setEditProfile }) => {
         const textarea = form.querySelector("textarea")
         editedProfileInfo["bio"] = textarea.value
 
-        console.log(userData)
-        editedProfileInfo["id"] = userData._id
-
         fetchProfileEdited(editedProfileInfo)
+          .then(data => {
+            if (data) {
+              setEditProfile(false)
+            }
+          })
       })
     }
   }

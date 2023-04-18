@@ -10,7 +10,7 @@ const FormInput = ({ type }) => {
   const { setUserData } = useGlobalContext()
   const emailRef = useRef(null);
   const passwordRef = useRef(null)
-  const navigateToProfile = useNavigate()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -25,8 +25,12 @@ const FormInput = ({ type }) => {
 
       fetchUser(type, username, password)
         .then(data => {
-          setUserData(data)
-          navigateToProfile("/profile")
+          if (data) {
+            setUserData(data)
+            navigate("/profile")
+          } else {
+            navigate("/form/signup")
+          }
         })
     }
   }

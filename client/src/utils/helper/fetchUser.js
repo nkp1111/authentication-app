@@ -35,10 +35,9 @@ const fetchUser = (type, username, password) => {
       }
     })
     .catch(err => {
-      toast("Something went wrong!", {
+      toast("Please sign Up!", {
         style: errorStyle
       })
-      console.log(err)
     })
 }
 
