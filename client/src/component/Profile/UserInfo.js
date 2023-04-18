@@ -1,6 +1,16 @@
 import React from 'react'
 
 const UserInfo = ({ userData, setEditProfile }) => {
+
+  const { image } = userData
+
+  let imageToShow
+  if (!image) {
+    imageToShow = "https://www.gravatar.com/avatar/"
+  } else {
+    imageToShow = image.url
+  }
+
   return (
     <section className='personal-info'>
       <h2>Personal info</h2>
@@ -24,13 +34,17 @@ const UserInfo = ({ userData, setEditProfile }) => {
             {["photo", "name", "bio", "phone", "email", "password"].map(item => {
               return (
                 <div className="row" key={item}>
+                  {/* item name  */}
                   <div className="col-4">{item.toUpperCase()}</div>
+                  {/* profile value  */}
                   <div className="col-8">
                     {item === "password"
                       ? "**********"
                       : item === "photo"
-                        ? <img src="https://www.gravatar.com/avatar/" alt="avatar" width="50" height="50" />
-                        : ""}
+                        ? <img src={imageToShow} alt="avatar" width="50" height="50" />
+                        : item === "email"
+                          ? userData["username"]
+                          : userData[item]}
                   </div>
                 </div>
               )

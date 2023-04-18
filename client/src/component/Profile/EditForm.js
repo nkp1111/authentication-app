@@ -42,6 +42,7 @@ const EditForm = ({ userData, setEditProfile }) => {
           .then(data => {
             if (data) {
               setEditProfile(false)
+              window.location.reload()
             }
           })
       })
