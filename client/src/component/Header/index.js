@@ -1,46 +1,20 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 import { CgProfile } from 'react-icons/cg'
-import { MdGroup, MdArrowDropDown } from 'react-icons/md'
+import { MdGroup } from 'react-icons/md'
 import { TbLogout } from 'react-icons/tb'
 
-import { notFicStyles, images } from '../../utils'
+import { images, fetchLogout } from '../../utils'
 import "./header.css"
-
-const { errorStyle, successStyle } = notFicStyles
 
 const Index = ({ username, image, setEditProfile }) => {
 
+  const navigator = useNavigate()
+
   const logout = (e) => {
-    const route = "/user/logout"
-    const url = process.env.NODE_ENV !== "development" ? route : "http://localhost:5000" + route
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          toast(data.error, {
-            style: errorStyle
-          })
-        }
-        if (data.success) {
-          toast(data.success, {
-            style: successStyle
-          })
-        }
-      })
-      .catch(err => {
-        console.log(err)
-        toast("Error happened", {
-          style: errorStyle
-        })
-        console.log(err)
-      })
+    localStorage.removeItem("user")
+    fetchLogout()
+    navigator("/form/login")
   }
 
   return (

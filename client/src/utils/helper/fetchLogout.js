@@ -4,12 +4,12 @@ import { notFicStyles } from '../'
 
 const { errorStyle, successStyle } = notFicStyles
 
-const fetchProfileEdited = (newInfo) => {
-  const route = "/profile/edit"
+const logout = () => {
+
+  const route = "/user/logout"
   const url = process.env.NODE_ENV !== "development" ? route : "http://localhost:5000" + route
   fetch(url, {
     method: "POST",
-    body: JSON.stringify(newInfo),
     headers: {
       "Content-Type": "application/json"
     },
@@ -25,17 +25,15 @@ const fetchProfileEdited = (newInfo) => {
         toast(data.success, {
           style: successStyle
         })
-        localStorage.setItem("user", JSON.stringify(data.user))
-        return data.user
       }
     })
     .catch(err => {
-      toast("Something went wrong!", {
+      console.log(err)
+      toast("Error happened", {
         style: errorStyle
       })
       console.log(err)
     })
 }
 
-export default fetchProfileEdited
-
+export default logout

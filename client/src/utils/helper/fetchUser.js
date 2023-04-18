@@ -30,6 +30,7 @@ const fetchUser = (type, username, password) => {
         toast(data.success, {
           style: successStyle
         })
+        localStorage.setItem("user", JSON.stringify(data.user))
         return data.user
       }
     })
