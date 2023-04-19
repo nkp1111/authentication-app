@@ -13,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/form/:type" element={<Form />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/*" element={<Profile />} />
       </Routes>
     </main>
   )

@@ -5,6 +5,7 @@ import SignUpText from './SignUpText'
 import Logo from './Logo'
 import FormInput from './FormInput'
 import SocialProfile from './SocialProfile'
+import { Footer } from '..'
 import "./form.css"
 
 const Index = () => {
@@ -14,18 +15,23 @@ const Index = () => {
 
   return (
     <div className='d-flex flex-column justify-content-center align-items-center vh-100'>
-      <div className="app__form card">
-        <Logo />
-        {type === "signup"
-          ? <SignUpText />
-          : (
-            <div className='app__form-head'>
-              <strong>Login</strong>
-            </div>
-          )}
-        <FormInput type={type} />
-        <SocialProfile type={type} />
+      <div>
+        <div className="app__form card">
+          <Logo />
+          {type === "signup"
+            ? <SignUpText />
+            : (
+              <div className='app__form-head'>
+                <strong>Login</strong>
+              </div>
+            )}
+          <FormInput type={type} />
+          <SocialProfile type={type} />
+        </div>
+
+        <Footer />
       </div>
+
     </div>
   )
 }

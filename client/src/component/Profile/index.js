@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, Routes, Route } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import useGlobalContext from '../../context'
 import UserInfo from './UserInfo'
 import EditForm from './EditForm'
-import { Header } from '..'
+import { Header, Footer } from '..'
 import "./profile.css"
 
 const Index = () => {
@@ -29,6 +29,7 @@ const Index = () => {
         {editProfile
           ? <EditForm userData={userData} setEditProfile={setEditProfile} />
           : <UserInfo userData={userData} setEditProfile={setEditProfile} />}
+        <Footer />
       </div>
     </div>
   )

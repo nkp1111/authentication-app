@@ -1,0 +1,8 @@
+footer {
+  margin-top: 2rem;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: underline;
+}
