@@ -1,0 +1,30 @@
+{
+  "name": "authentication-app",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Authentication App</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm start",
+    "server": "nodemon server/app.js",
+    "build": "cd client && npm run build",
+    "vercel-build": "npm run build && cp -r client/build server/public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkp1111/authentication-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkp1111/authentication-app/issues"
+  },
+  "homepage": "https://github.com/nkp1111/authentication-app#readme",
+  "dependencies": {
+    "nodemon": "^2.0.22",
+    "concurrently": "^8.0.1"
+  }
+}

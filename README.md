@@ -10,8 +10,8 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
+    <a href="https://github.com/nkp1111/authentication-app">
+      GitHub
     </a>
     <span> | </span>
     <a href="https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw">
@@ -31,7 +31,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./client/src/assets/Screenshot%202023-04-19%20112639.png)
 
 ### Built With
 
@@ -39,10 +39,11 @@
 - Express
 - [React](https://reactjs.org/)
 - Node
+- Bootstrap
 
 ## Features
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw) was to build an application to complete the given user storie.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw) was to build an application to complete the given user story.
 
 ## How To Use
 
@@ -63,6 +64,25 @@ $ npm start
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
+
+frontend
+
+- react-icons
+- react-router-dom
+- react-hot-toast
+
+backend
+
+- cloudinary
+- connect-mongo
+- cors
+- cookie-parser
+- dotenv
+- mongoose
+- passport
+- passport-local
+- passport-local-mongoose
+- express-session
 
 ## Contact
 

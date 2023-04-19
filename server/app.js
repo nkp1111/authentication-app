@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const cors = require("cors")
+const path = require('path');
 require("dotenv").config({ path: require('find-config')('config.env') })
 const session = require("express-session")
 const passport = require("passport")
@@ -48,12 +49,22 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../build')));
+
+
 app.use("/user", userRoute)
 app.use("/profile", profileRoute)
 
 app.get("/", (req, res) => {
   res.json({ home: "home" })
 })
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+});
 
 app.listen(port, () => {
   // mongoose database connection

@@ -33,14 +33,12 @@ router.post("/login",
         res.send({ "error": "Error during login" })
       }
     })
-    console.log(req.user)
     res.cookie("sessionId", req.session.id)
     res.send({ "success": "Successfully logged in", user: req.user })
   })
 
 router.post("/logout", (req, res) => {
   // logout user in database
-  console.log(req.session)
   if (req.isAuthenticated()) {
     req.logout(function (err) {
       if (err) {
