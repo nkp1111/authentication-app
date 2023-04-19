@@ -88,16 +88,15 @@
 .profile-img-edit {
   border-radius: 1rem;
   overflow: hidden;
-  width: 5rem;
-  height: 5rem;
+  flex-shrink: 0;
 
   margin-right: 2rem;
   position: relative;
 }
 
 .profile-img-edit img {
-  width: 100%;
-  height: 100%;
+  width: 5rem;
+  height: 5rem;
   object-fit: cover;
 }
 
@@ -138,4 +137,28 @@ label[role="button"]:hover {
 .edit-form .btn {
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
+}
+
+@media screen and (max-width:62.5rem) {
+  .profile-holder {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width:48rem) {
+  .profile-holder {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width:34.375rem) {
+
+  .card-header,
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-header {
+    padding-top: 1.25rem;
+  }
 }

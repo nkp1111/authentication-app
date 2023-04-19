@@ -6,3 +6,9 @@ footer a {
   color: inherit;
   text-decoration: underline;
 }
+
+@media screen and (max-width:31.25rem) {
+  footer {
+    padding: 0 0.5rem;
+  }
+}

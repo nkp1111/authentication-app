@@ -4,8 +4,11 @@
 
 nav .profile {
   margin-right: 1rem;
+  margin-left: auto;
 
   font-weight: 700;
+
+  align-items: center;
 }
 
 nav .profile img {
@@ -47,4 +50,27 @@ nav .profile img {
 
 .dropdown-item.logout-item {
   color: var(--red);
+}
+
+@media screen and (max-width:31.25rem) {
+
+  nav .profile {
+    position: relative;
+  }
+
+  nav .profile div:first-child {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  nav .profile div:nth-child(2) {
+    display: none;
+  }
+
+  .dropdown-toggle {
+    opacity: 0;
+  }
 }

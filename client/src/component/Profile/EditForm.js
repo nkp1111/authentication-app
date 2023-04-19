@@ -78,7 +78,7 @@ const EditForm = ({ userData, setEditProfile }) => {
               </div>
               CHANGE PHOTO
               <input type="file" id="image" name="image"
-                className='invisible'
+                className='invisible w-25'
                 ref={imageRef}
                 required />
             </label>
