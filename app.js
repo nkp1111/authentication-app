@@ -51,19 +51,16 @@ passport.deserializeUser(User.deserializeUser())
 
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 app.use("/user", userRoute)
 app.use("/profile", profileRoute)
 
-app.get("/", (req, res) => {
-  res.json({ home: "home" })
-})
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.listen(port, () => {
