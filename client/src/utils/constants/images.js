@@ -6,8 +6,7 @@ import githubIcon from '../../assets/Github.svg'
 import googleIcon from '../../assets/Google.svg'
 import twitterIcon from '../../assets/Twitter.svg'
 
-
-export default {
+const images = {
   logoDarkMode,
   logo,
   logoPNG,
@@ -16,3 +15,5 @@ export default {
   googleIcon,
   twitterIcon,
 }
+
+export default images

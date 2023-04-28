@@ -51,22 +51,22 @@ const Index = ({ userData, setEditProfile }) => {
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#"
+                    <span className="dropdown-item"
                       onClick={(e) => setEditProfile(false)}>
                       <CgProfile /> My Profile
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#"><MdGroup />Group Chat</a>
+                    <span className="dropdown-item"><MdGroup />Group Chat</span>
                   </li>
 
                   <li><hr className="dropdown-divider" /></li>
 
                   <li>
-                    <a className="dropdown-item logout-item" href="#"
+                    <span className="dropdown-item logout-item"
                       onClick={(e) => logout(e)}>
                       <TbLogout />Log Out
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </li>

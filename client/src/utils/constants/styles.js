@@ -12,4 +12,6 @@ const errorStyle = {
   fontWeight: "600"
 }
 
-export default { successStyle, errorStyle }
+const notificationStyle = { successStyle, errorStyle }
+
+export default notificationStyle
