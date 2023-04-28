@@ -6,8 +6,8 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
+    <a href="https://authentication-app-ten.vercel.app/">
+      Live App
     </a>
     <span> | </span>
     <a href="https://github.com/nkp1111/authentication-app">
