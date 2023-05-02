@@ -20,7 +20,7 @@ const Index = () => {
     } else {
       navigate("/form/login")
     }
-  }, [navigate, setUserData]);
+  }, []);
 
   return (
     <div>
